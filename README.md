@@ -8,3 +8,6 @@
 * Use Monday.com for sprint planning and tracking
 * Use README for minute meetings
 * Use EC2 instance to host mysql server
+* David is setting up the databases, drawing up schema and will be responsible for the ERD diagram.
+* Daniel will be creating the initial templates
+* Ahmed will handle routes and models
