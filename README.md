@@ -21,3 +21,6 @@
 | 22-10-2024 | Ahmed         |  Created Repository                    |
 | 22-10-2024 | Ahmed         |  Set up Monday.com                    |
 | 22-10-2024 | Ahmed         |  Structured README for timesheets and meeting minutes.                    |
+| 22-10-2024 | David         |  Created Database Schema and ERD                    |
+| 22-10-2024 | Daniel        |  First kanban html implementation                    |
+| 22-10-2024 | Ahmed         |  first implementations of routes and models                    |
