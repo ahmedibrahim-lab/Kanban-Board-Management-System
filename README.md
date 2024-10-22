@@ -13,3 +13,11 @@
 * David is setting up the databases, drawing up schema and will be responsible for the ERD diagram.
 * Daniel will be creating the initial templates
 * Ahmed will handle routes and models
+
+# Timesheet
+
+| Date       | Person        | Task                                   |
+|------------|---------------|----------------------------------------|
+| 22-10-2024 | Ahmed         | * Created Repository
+                               * Set up Monday.com
+                               * Structured README for timesheets and meeting minutes.|
