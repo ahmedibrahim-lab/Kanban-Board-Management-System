@@ -18,6 +18,6 @@
 
 | Date       | Person        | Task                                   |
 |------------|---------------|----------------------------------------|
-| 22-10-2024 | Ahmed         | * Created Repository
-                               * Set up Monday.com
-                               * Structured README for timesheets and meeting minutes.|
+| 22-10-2024 | Ahmed         |  Created Repository                    |
+| 22-10-2024 | Ahmed         |  Set up Monday.com                    |
+| 22-10-2024 | Ahmed         |  Structured README for timesheets and meeting minutes.                    |
