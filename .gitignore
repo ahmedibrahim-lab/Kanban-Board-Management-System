@@ -1,4 +1,2 @@
-__pycache__/config.cpython-37.pyc 
-__pycache__/models.cpython-37.pyc 
-routes/__pycache__/auth.cpython-37.pyc 
-routes/__pycache__/tasks.cpython-37.pyc
+__pycache__/
+routes/__pycache__/
