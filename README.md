@@ -24,3 +24,7 @@
 | 22-10-2024 | David         |  Created Database Schema and ERD                    |
 | 22-10-2024 | Daniel        |  First kanban html implementation                    |
 | 22-10-2024 | Ahmed         |  first implementations of routes and models                    |
+
+
+
+## Meeting 2 - 23/10/2024 - Daniel Hewitt
