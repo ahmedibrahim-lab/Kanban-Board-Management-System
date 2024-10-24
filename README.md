@@ -28,3 +28,19 @@
 
 
 ## Meeting 2 - 23/10/2024 - Daniel Hewitt
+
+* Daniel Will finish HTML templates
+* Ahmed will test models and routes using local database
+* David will set up sample data and set up the EC2
+
+#timesheet 
+| Date       | Person        | Task                                   |
+|------------|---------------|----------------------------------------|
+| 23-10-2024 | Ahmed         |  tested models                         |
+| 22-10-2024 | David         |  Set up EC2                            |
+| 22-10-2024 | David         |  set up sample data                    |
+| 22-10-2024 | Ahmed         |  tested routes                         |
+| 22-10-2024 | Daniel        |  Finished HTML templates               |
+| 22-10-2024 | Ahmed         |  first implementation of tasks         |
+
+#Meeting duration: 15mins
