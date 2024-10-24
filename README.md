@@ -43,7 +43,7 @@
 | 22-10-2024 | Daniel        |  Finished HTML templates               |
 | 22-10-2024 | Ahmed         |  first implementation of tasks         |
 
-#Meeting duration: 15mins
+#### Meeting duration: 15mins
 
 ## Meeting 2 - 24/10/2024 - David Szabo
 
@@ -52,7 +52,7 @@ Made on 23/10/2024:
 * Ahmed: authentication system, DB connectivity
 * David: DB debug, sample datas, EC2 installation
 
-#timesheet 
+# Timesheet 
 | Date       | Person        | Task                                   |
 |------------|---------------|----------------------------------------|
 | 24-10-2024 | Ahmed         |  further debugging, optimazition       |
@@ -60,4 +60,4 @@ Made on 23/10/2024:
 | 24-10-2024 | David         |  DB storage fix, additional features   |
 
 
-#Meeting duration: 15mins
+#### Meeting duration: 15mins
