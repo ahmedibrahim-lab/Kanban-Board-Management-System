@@ -14,6 +14,8 @@
 * Daniel will be creating the initial templates
 * Ahmed will handle routes and models
 
+#### Meeting duration: 15mins
+
 # Timesheet
 
 | Date       | Person        | Task                                   |
