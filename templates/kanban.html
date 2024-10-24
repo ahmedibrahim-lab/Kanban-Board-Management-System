@@ -3,22 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <link rel="stylesheet" href="Kanban-Board-Management-System/static/style.css"> 
+    <link rel="stylesheet" href="{{ url_for ('static', filename='style.css') }}">
     <title>Kanban Board</title>
 </head>
 <body>
     <header style="display: flex; justify-content: space-between; align-items: center;">
         <h1>Kanban Board</h1>
         <div style="display: flex; justify-content: flex-end; gap: 20px; align-items: center;">
-            <button onclick="document.getElementById('createTaskModal').style.display='block'">Create New Task</button>
-
-            
-            <form id="taskFilterForm" method="GET" action="{{ url_for('tasks.filter') }}" style="display: flex; gap: 10px;">
-                
+            <button onclick="openTaskModal()">Create New Task</button>
+            <!-- Filter Form -->
+            <form id="taskFilterForm" style="display: flex; gap: 10px; align-items: center;">
                 <div>
                     <label for="status">Status:</label>
-                    <select id="status" name="status">
+                    <select id="statusFilter" name="status" onchange="filterTasks()">
                         <option value="">All</option>
                         <option value="todo">To Do</option>
                         <option value="in_progress">In Progress</option>
@@ -26,68 +23,56 @@
                     </select>
                 </div>
                 <div>
-                    <label for="due_date">Due Date:</label>
-                    <input type="date" id="due_date" name="due_date">
-                </div> 
-                <div>
                     <label for="priority">Priority:</label>
-                    <select id="priority" name="priority">
+                    <select id="priorityFilter" name="priority" onchange="filterTasks()">
                         <option value="">All</option>
                         <option value="Low">Low</option>
                         <option value="Medium">Medium</option>
                         <option value="High">High</option>
                     </select>
                 </div>
-
-                <button type="submit">Filter</button>
+                <div>
+                    <label for="due_date">Due Date:</label>
+                    <input type="date" id="dueDateFilter" name="due_date" onchange="filterTasks()">
+                </div>
+                <button type="button" onclick="resetFilters()">Reset Filters</button>
             </form>
         </div>
-    </header>
+    </header>   
 
-    
     <div style="display: flex; justify-content: space-between; margin-top: 20px;">
-        <div style="flex: 1; margin-right: 10px; border-right: 2px solid #ccc; padding-right: 10px;">
+        <div id="todo-column" style="flex: 1; margin-right: 10px; border-right: 2px solid #ccc; padding-right: 10px;">
             <h2>To Do</h2>
+            <ul id="todo" class="task-list" ondragover="allowDrop(event)" ondrop="drop(event, 'todo')"></ul>
         </div>
-        <div style="flex: 1; margin-right: 10px; border-right: 2px solid #ccc; padding-right: 10px;">
+        <div id="in-progress-column" style="flex: 1; margin-right: 10px; border-right: 2px solid #ccc; padding-right: 10px;">
             <h2>In Progress</h2>
+            <ul id="in_progress" class="task-list" ondragover="allowDrop(event)" ondrop="drop(event, 'in_progress')"></ul>
         </div>
-        <div style="flex: 1; padding-left: 10px;">
+        <div id="done-column" style="flex: 1; padding-left: 10px;">
             <h2>Done</h2>
+            <ul id="done" class="task-list" ondragover="allowDrop(event)" ondrop="drop(event, 'done')"></ul>
         </div>
-    </div>
+    </div> 
 
-=======
-    <title>Kanban Board</title>
-</head>
-<body>
-    <header>
-        <h1>Kanban Board</h1>
-        <button onclick="document.getElementById('createTaskModal').style.display='block'">Create New Task</button>
-    </header>
-    
->>>>>>> eeb98427e61a41982741c73e4b1a80110abe2648
-    <div id="createTaskModal" style="display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
-        <div style="background-color: white; margin: 5% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 5px;">
-            <span onclick="document.getElementById('createTaskModal').style.display='none'" style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+    <div id="createTaskModal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" onclick="closeTaskModal()">&times;</span>
             <h2>Create New Task</h2>
-            <form method="POST" action="{{ url_for('tasks.create') }}">
-                <div>
+            <form id="createTaskForm">
+                <div class="create-task-form-group">
                     <label for="title">Task Title:</label>
                     <input type="text" id="title" name="title" required>
                 </div>
-
-                <div>
+                <div class="create-task-form-group">
                     <label for="description">Task Description:</label>
                     <textarea id="description" name="description" required></textarea>
                 </div>
-
-                <div>
+                <div class="create-task-form-group">
                     <label for="due_date">Due Date:</label>
                     <input type="date" id="due_date" name="due_date" required>
                 </div>
-
-                <div>
+                <div class="create-task-form-group">
                     <label for="priority">Priority:</label>
                     <select id="priority" name="priority">
                         <option value="Low">Low</option>
@@ -95,31 +80,137 @@
                         <option value="High">High</option>
                     </select>
                 </div>
-
-                <button type="submit">Create Task</button>
+                <button type="button" onclick="createTask()">Create Task</button>
             </form>
         </div>
     </div>
 
     <script>
-<<<<<<< HEAD
-        var modal = document.getElementById("createTaskModal");
+        let tasks = [];
 
-=======
-        
-        var modal = document.getElementById("createTaskModal");
-        var span = document.getElementsByClassName("close")[0];
->>>>>>> eeb98427e61a41982741c73e4b1a80110abe2648
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
+        function openTaskModal() {
+            document.getElementById('createTaskModal').style.display = 'block';
+        }
+
+        function closeTaskModal() {
+            document.getElementById('createTaskModal').style.display = 'none';
+        }
+
+        function createTask() {
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            const dueDate = document.getElementById('due_date').value;
+            const priority = document.getElementById('priority').value;
+
+            const newTask = {
+                id: Date.now(),
+                title,
+                description,
+                dueDate,
+                priority,
+                status: 'todo'
+            };
+
+            tasks.push(newTask);
+            addTaskToBoard(newTask);
+            closeTaskModal();
+        }
+
+        function addTaskToBoard(task) {
+            const taskList = document.getElementById(task.status);
+            const taskItem = document.createElement('li');
+            taskItem.classList.add('task-item');
+            taskItem.setAttribute('draggable', true);
+            taskItem.setAttribute('ondragstart', 'drag(event)');
+            taskItem.setAttribute('id', task.id);
+
+            taskItem.innerHTML = `
+                <strong>${task.title}</strong><br>
+                ${task.description}<br>
+                Priority: ${task.priority}<br>
+                Due: ${task.dueDate}
+                <br>
+                <button class="edit-button" onclick="editTask(${task.id})">Edit</button>
+                <button class="delete-button" onclick="deleteTask(${task.id})">Delete</button>
+            `;
+
+            taskList.appendChild(taskItem);
+        }
+
+        function deleteTask(taskId) {
+            const taskElement = document.getElementById(taskId);
+            taskElement.remove();
+            tasks = tasks.filter(task => task.id !== taskId);
+        }
+
+        function editTask(taskId) {
+            const task = tasks.find(task => task.id === taskId);
+
+            document.getElementById('title').value = task.title;
+            document.getElementById('description').value = task.description;
+            document.getElementById('due_date').value = task.dueDate;
+            document.getElementById('priority').value = task.priority;
+
+            const createButton = document.querySelector('#createTaskForm button');
+            createButton.innerText = 'Update Task';
+            createButton.onclick = function() {
+                updateTask(taskId);
+            };
+
+            openTaskModal();
+        }
+
+        function updateTask(taskId) {
+            const task = tasks.find(task => task.id === taskId);
+
+            task.title = document.getElementById('title').value;
+            task.description = document.getElementById('description').value;
+            task.dueDate = document.getElementById('due_date').value;
+            task.priority = document.getElementById('priority').value;
+
+            document.getElementById(taskId).innerHTML = `
+                <strong>${task.title}</strong><br>
+                ${task.description}<br>
+                Priority: ${task.priority}<br>
+                Due: ${task.dueDate}
+                <br>
+                <button class="edit-button" onclick="editTask(${task.id})">Edit</button>
+                <button class="delete-button" onclick="deleteTask(${task.id})">Delete</button>
+            `;
+
+            document.getElementById('createTaskForm').reset();
+            const createButton = document.querySelector('#createTaskForm button');
+            createButton.innerText = 'Create Task';
+            createButton.onclick = createTask;
+
+            closeTaskModal();
+        }
+
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drop(event, newStatus) {
+            event.preventDefault();
+            const taskId = event.dataTransfer.getData("text");
+            const taskElement = document.getElementById(taskId);
+
+            tasks = tasks.map(task => {
+                if (task.id === parseInt(taskId)) {
+                    task.status = newStatus;
+                }
+                return task;
+            });
+
+            const targetColumn = document.getElementById(newStatus);
+            targetColumn.appendChild(taskElement);
         }
     </script>
 </body>
-<<<<<<< HEAD
-</html>
-=======
 </html>
 
 
