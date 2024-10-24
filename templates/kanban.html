@@ -14,15 +14,6 @@
             <!-- Filter Form -->
             <form id="taskFilterForm" method="GET" action="{{ url_for('tasks.filter_tasks') }}" style="display: flex; gap: 10px; align-items: center;">
                 <div>
-                    <label for="status">Status:</label>
-                    <select id="statusFilter" name="status">
-                        <option value="" {% if current_status == '' %}selected{% endif %}>All</option>
-                        <option value="todo" {% if current_status == 'todo' %}selected{% endif %}>To Do</option>
-                        <option value="in_progress" {% if current_status == 'in_progress' %}selected{% endif %}>In Progress</option>
-                        <option value="done" {% if current_status == 'done' %}selected{% endif %}>Done</option>
-                    </select>
-                </div>
-                <div>
                     <label for="priority">Priority:</label>
                     <select id="priorityFilter" name="priority">
                         <option value="" {% if current_priority == '' %}selected{% endif %}>All</option>
@@ -98,7 +89,7 @@
         <div class="modal-content">
             <span id="closeModal" onclick="closeTaskModal()">&times;</span>
             <h2>Create New Task</h2>
-            <form id="createTaskForm" method="POST" action="{{ url_for('tasks.view_tasks') }}">
+            <form id="createTaskForm" method="POST" action="{{ url_for('tasks.create_task_route') }}">
                 <div class="create-task-form-group">
                     <label for="task_name">Task Title:</label>
                     <input type="text" id="task_name" name="task_name" required>
@@ -160,7 +151,6 @@
         var updateTaskStatusUrl = "{{ url_for('tasks.update_status') }}";
 
         document.addEventListener('DOMContentLoaded', function () {
-            document.getElementById('statusFilter').addEventListener('change', filterTasks);
             document.getElementById('priorityFilter').addEventListener('change', filterTasks);
             document.getElementById('dueDateFilter').addEventListener('change', filterTasks);
         });
@@ -201,7 +191,6 @@
         }
 
         function resetFilters() {
-            document.getElementById('statusFilter').value = '';
             document.getElementById('priorityFilter').value = '';
             document.getElementById('dueDateFilter').value = '';
             filterTasks();
