@@ -11,7 +11,7 @@
         <h1>Kanban Board</h1>
         <div style="display: flex; justify-content: flex-end; gap: 20px; align-items: center;">
             <button onclick="openTaskModal()">Create New Task</button>
-            <!-- Filter Form -->
+            
             <form id="taskFilterForm" method="GET" action="{{ url_for('tasks.filter_tasks') }}" style="display: flex; gap: 10px; align-items: center;">
                 <div>
                     <label for="priority">Priority:</label>
@@ -31,8 +31,7 @@
         </div>
     </header>   
 
-    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
-        <!-- To Do Column -->
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;"> 
         <div id="todo-column" style="flex: 1; margin-right: 10px; border-right: 2px solid #ccc; padding-right: 10px;">
             <h2>To Do</h2>
             <ul id="todo" class="task-list" ondragover="allowDrop(event)" ondrop="drop(event, 'To Do')">
@@ -49,7 +48,6 @@
             </ul>
         </div>
     
-        <!-- In Progress Column -->
         <div id="in-progress-column" style="flex: 1; margin-right: 10px; border-right: 2px solid #ccc; padding-right: 10px;">
             <h2>In Progress</h2>
             <ul id="in_progress" class="task-list" ondragover="allowDrop(event)" ondrop="drop(event, 'In Progress')">
@@ -66,7 +64,6 @@
             </ul>
         </div>
     
-        <!-- Done Column -->
         <div id="done-column" style="flex: 1; padding-left: 10px;">
             <h2>Done</h2>
             <ul id="done" class="task-list" ondragover="allowDrop(event)" ondrop="drop(event, 'Done')">
@@ -84,7 +81,6 @@
         </div>
     </div>
     
-
     <div id="createTaskModal" class="modal">
         <div class="modal-content">
             <span id="closeModal" onclick="closeTaskModal()">&times;</span>
@@ -116,7 +112,7 @@
         </div>
     </div>
 
-    <div id="editTaskModal" class="modal" style="display: none;"> <!-- Set display to none -->
+    <div id="editTaskModal" class="modal" style="display: none;"> 
         <div class="modal-content">
             <span id="closeEditModal" onclick="closeEditModal()">&times;</span>
             <h2>Edit Task</h2>
@@ -196,7 +192,6 @@
             filterTasks();
         }
 
-        // Edit Task Modal Functions
     function openEditModal(task_id, task_name, description, due_date, priority) {
         document.getElementById('editTaskModal').style.display = 'block';
         document.getElementById('edit_task_name').value = task_name;
@@ -210,7 +205,6 @@
         document.getElementById('editTaskModal').style.display = 'none';
     }
 
-    // Delete Task
     function deleteTask(task_id) {
         if (confirm('Are you sure you want to delete this task?')) {
             fetch(`/delete_task/${task_id}`, {
