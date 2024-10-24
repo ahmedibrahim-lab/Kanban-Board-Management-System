@@ -192,57 +192,83 @@ div[id^="createTaskModal"] {
 
 
 
-
 .login-page {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; 
-    background-color: #f4f4f4; 
+    height: 100vh;
+    flex-direction: column;
+    background-color: #121212;
+    padding-top: 20px;
+}
+
+.welcome-text-container {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.welcome-text-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+}
+
+.welcome-text-container p {
+    font-size: 1.2rem;
+    color: #ccc;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .login-container {
     max-width: 400px;
-    background-color: white;
-    padding: 20px;
+    background-color: #1e1e1e;
+    padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    margin-top: 20px;
 }
 
 .login-container h2 {
     text-align: center;
-    color: #333;
-}
-
-.form-group {
+    color: white;
     margin-bottom: 15px;
 }
 
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
 .form-group label {
-    display: block;
-    font-weight: bold;
     margin-bottom: 5px;
+    color: #e0e0e0;
 }
 
 .form-group input {
-    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    width: 100%;
 }
 
 button.form-button {
     width: 100%;
-    padding: 10px;
-    background-color: #007bff;
+    padding: 12px;
+    background-color: #28a745;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
 }
 
 button.form-button:hover {
-    background-color: #0056b3;
+    background-color: #218838;
 }
 
 .login-register-link {
@@ -258,6 +284,8 @@ button.form-button:hover {
 .login-register-link a:hover {
     text-decoration: underline;
 }
+
+
 
 
 
