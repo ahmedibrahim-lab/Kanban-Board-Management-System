@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, redirect, url_for
 from routes.auth import auth_bp
 from routes.tasks import tasks_bp
 import mysql.connector
@@ -20,6 +20,10 @@ def get_db_connection():
 # Register the blueprints
 app.register_blueprint(auth_bp, url_prefix='/auth')
 app.register_blueprint(tasks_bp)
+
+@app.route('/')
+def index():
+    return redirect(url_for('auth.register'))
 
 @app.route('/test_db')
 def test_db():
