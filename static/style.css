@@ -1,78 +1,95 @@
 
 body {
+    background-color: #121212;
+    color: #e0e0e0;
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background-color: #f4f4f4;
 }
+
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    color: white;
-    padding: 10px 20px;
+    background-color: #2c2c2c;
+    padding: 20px;
+    border-radius: 5px;
+    color: #e0e0e0;
 }
 
-header h1 {
+h1 {
     margin: 0;
 }
 
 button {
-    background-color: #5cb85c;
+    background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 10px 20px;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 button:hover {
-    background-color: #4cae4c;
+    background-color: #45a049;
 }
 
-
-.kanban-board {
+form {
     display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+    align-items: center;
+    gap: 10px;
 }
 
-.column {
-    flex: 1;
-    margin-right: 10px;
-    padding-right: 10px;
-    border-right: 2px solid #ccc;
+label {
+    color: #e0e0e0;
 }
 
-.column:last-child {
-    margin-right: 0;
-    border-right: none;
+
+input[type="date"],
+select {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+    padding: 5px;
+    border-radius: 5px;
 }
 
-.column h2 {
-    background-color: #007bff;
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+button[type="submit"] {
+    background-color: #2196F3;
+    border: none;
     color: white;
-    text-align: center;
     padding: 10px;
+    cursor: pointer;
     border-radius: 5px;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    background-color: white;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
+button[type="submit"]:hover {
+    background-color: #1976d2;
 }
 
 
-.modal {
+div {
+    color: #e0e0e0;
+}
+
+h2 {
+    color: #ffffff;
+}
+
+div[id^="createTaskModal"] {
+    background-color: #333;
+    color: #fff;
+}
+
+.modal-content {
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid #444;
+}
+
+
+#createTaskModal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -81,61 +98,229 @@ li {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.7); 
 }
 
-.modal-content {
-    background-color: white;
-    margin: 5% auto;
+
+#createTaskModal .modal-content {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    margin: 10% auto;
     padding: 20px;
-    border: 1px solid #888;
+    border: 1px solid #444;
     width: 80%;
     max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+.create-task-form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+
+#createTaskModal input[type="text"],
+#createTaskModal input[type="date"],
+#createTaskModal textarea,
+#createTaskModal select {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+    padding: 10px;
     border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
+
+#createTaskModal label {
+    color: #e0e0e0;
     font-weight: bold;
+    margin-bottom: 5px;
 }
 
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
+
+#createTaskModal button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
+    display: block;
+    margin: 20px auto 0 auto;  
+    width: 150px; 
+    text-align: center; 
+}
+
+#createTaskModal button[type="submit"]:hover {
+    background-color: #45a049;
 }
 
 
-form div {
+.task-item {
+    background-color: #e9de78 !important; 
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2); 
+    color: #333 !important;
+    font-family: 'Comic Sans MS', cursive, sans-serif; 
+    cursor: grab;
+    transition: transform 0.2s; 
+}
+
+.task-item:hover {
+    transform: scale(1.02); 
+}
+
+.task-list {
+    padding: 10px;
+    background-color: #444;
+    border-radius: 5px;
+    min-height: 150px;
+}
+
+
+.task-list.dragging-over {
+    background-color: #555;
+}
+
+
+
+
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    background-color: #f4f4f4; 
+}
+
+.login-container {
+    max-width: 400px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+    text-align: center;
+    color: #333;
+}
+
+.form-group {
     margin-bottom: 15px;
 }
 
-form label {
+.form-group label {
     display: block;
-    margin-bottom: 5px;
     font-weight: bold;
+    margin-bottom: 5px;
 }
 
-form input,
-form textarea,
-form select {
+.form-group input {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
-form button {
+button.form-button {
+    width: 100%;
+    padding: 10px;
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 10px 15px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-form button:hover {
+button.form-button:hover {
     background-color: #0056b3;
+}
+
+.login-register-link {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.login-register-link a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-register-link a:hover {
+    text-decoration: underline;
+}
+
+.register-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    background-color: #f4f4f4;
+}
+
+.register-container {
+    max-width: 400px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.register-container h2 {
+    text-align: center;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button.form-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.form-button:hover {
+    background-color: #0056b3;
+}
+
+.login-register-link {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.login-register-link a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-register-link a:hover {
+    text-decoration: underline;
 }
