@@ -4,6 +4,7 @@ from config import Config
 def get_db_connection():
     connection = mysql.connector.connect(
         host=Config.MYSQL_HOST,
+        port=Config.MYSQL_PORT,
         user=Config.MYSQL_USER,
         password=Config.MYSQL_PASSWORD,
         database=Config.MYSQL_DB
@@ -56,6 +57,41 @@ def get_tasks_by_user(user_id):
     conn.close()
     return tasks
 
+def update_task_status(task_id, new_stage):
+    """Update the status of a task by task_id."""
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("""
+        UPDATE task 
+        SET stage = %s, updated = NOW() 
+        WHERE task_id = %s
+    """, (new_stage, task_id))
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+def edit_task(task_id, task_name, description, deadline, priority):
+    """Edit a task by task_id."""
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("""
+        UPDATE task 
+        SET task_name = %s, description = %s, deadline = %s, priority = %s, updated = NOW() 
+        WHERE task_id = %s
+    """, (task_name, description, deadline, priority, task_id))
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+def delete_task(task_id):
+    """Delete a task by task_id."""
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM task WHERE task_id = %s", (task_id,))
+    conn.commit()
+    cursor.close()
+    conn.close()
+
 # Task assignment operations
 def assign_task(task_id, user_id, start_time, end_time):
     conn = get_db_connection()
@@ -80,3 +116,5 @@ def get_task_assignments(user_id):
     cursor.close()
     conn.close()
     return assignments
+
+    
