@@ -35,7 +35,8 @@
 * Ahmed will test models and routes using local database
 * David will set up sample data and set up the EC2
 
-#timesheet 
+# Timesheet 
+
 | Date       | Person        | Task                                   |
 |------------|---------------|----------------------------------------|
 | 23-10-2024 | Ahmed         |  tested models                         |
@@ -55,6 +56,7 @@ Made on 23/10/2024:
 * David: DB debug, sample datas, EC2 installation
 
 # Timesheet 
+
 | Date       | Person        | Task                                   |
 |------------|---------------|----------------------------------------|
 | 24-10-2024 | Ahmed         |  further debugging, optimazition       |
