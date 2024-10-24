@@ -44,3 +44,20 @@
 | 22-10-2024 | Ahmed         |  first implementation of tasks         |
 
 #Meeting duration: 15mins
+
+## Meeting 2 - 24/10/2024 - David Szabo
+
+Made on 23/10/2024:
+* Daniel: kanban board with sticky notes with filtering.
+* Ahmed: authentication system, DB connectivity
+* David: DB debug, sample datas, EC2 installation
+
+#timesheet 
+| Date       | Person        | Task                                   |
+|------------|---------------|----------------------------------------|
+| 24-10-2024 | Ahmed         |  further debugging, optimazition       |
+| 24-10-2024 | Daniel        |  finish the css template and kanban    |
+| 24-10-2024 | David         |  DB storage fix, additional features   |
+
+
+#Meeting duration: 15mins
