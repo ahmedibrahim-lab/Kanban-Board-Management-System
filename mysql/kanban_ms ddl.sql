@@ -38,6 +38,24 @@ CREATE TABLE task_assignment
 	updated timestamp NOT NULL DEFAULT now()
 );
 
+CREATE TABLE task_stage_log
+(
+	task_id bigint UNSIGNED NOT NULL,
+	task_name varchar(50) NOT NULL,
+	stage SMALLINT NOT NULL,			/* 1 - to do, 2 - in progress, 3 - done */
+	changed_at timestamp NOT NULL DEFAULT now()
+);
+
+CREATE TABLE user_activity_log
+(
+	user_id int UNSIGNED NOT NULL,
+	user_name varchar (50),
+	modified_table varchar(50) NOT NULL,
+	modified_field varchar(50) NOT NULL,
+	modification_time timestamp NOT NULL DEFAULT now()
+);
+
+
 ALTER TABLE task
 	ADD CONSTRAINT task_created_by_user_id_fk FOREIGN KEY (created_by) REFERENCES kanban_user(user_id) ON DELETE CASCADE;
 
