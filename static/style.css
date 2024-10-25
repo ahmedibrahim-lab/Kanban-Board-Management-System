@@ -47,8 +47,8 @@ label {
 
 input[type="date"],
 select {
-    background-color: #333;
-    color: #fff;
+    background-color: #ffffff;
+    color: #000000;
     border: 1px solid #555;
     padding: 5px;
     border-radius: 5px;
@@ -73,20 +73,20 @@ button[type="submit"]:hover {
 
 
 div {
-    color: #e0e0e0;
+    color: #000000;
 }
 
 h2 {
-    color: #ffffff;
+    color: #000000;
 }
 
 div[id^="createTaskModal"] {
-    background-color: #333;
-    color: #fff;
+    background-color: #ffffff;
+    color: #000000;
 }
 
 .modal-content {
-    background-color: #1c1c1c;
+    background-color: #ffffff;
     border-radius: 10px;
     padding: 20px;
     border: 1px solid #444;
@@ -102,13 +102,13 @@ div[id^="createTaskModal"] {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.7); 
+    background-color: rgba(255, 255, 255, 0.7); 
 }
 
 
 #createTaskModal .modal-content {
-    background-color: #1e1e1e;
-    color: #e0e0e0;
+    background-color: #d0ffec;
+    color: #434343;
     margin: 10% auto;
     padding: 20px;
     border: 1px solid #444;
@@ -131,8 +131,8 @@ div[id^="createTaskModal"] {
 #createTaskModal input[type="date"],
 #createTaskModal textarea,
 #createTaskModal select {
-    background-color: #333;
-    color: #fff;
+    background-color: #ffffff;
+    color: #434343;
     border: 1px solid #555;
     padding: 10px;
     border-radius: 5px;
@@ -142,7 +142,7 @@ div[id^="createTaskModal"] {
 
 
 #createTaskModal label {
-    color: #e0e0e0;
+    color: #000000;
     font-weight: bold;
     margin-bottom: 5px;
 }
@@ -150,7 +150,7 @@ div[id^="createTaskModal"] {
 
 #createTaskModal button[type="submit"] {
     background-color: #4CAF50;
-    color: white;
+    color: rgb(255, 255, 255);
     padding: 12px 25px;
     border: none;
     border-radius: 5px;
@@ -162,7 +162,7 @@ div[id^="createTaskModal"] {
 }
 
 #createTaskModal button[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #003903;
 }
 
 
@@ -270,7 +270,7 @@ button.form-button {
 }
 
 button.form-button:hover {
-    background-color: #218838;
+    background-color: #003903;
 }
 
 .login-register-link {
@@ -286,10 +286,6 @@ button.form-button:hover {
 .login-register-link a:hover {
     text-decoration: underline;
 }
-
-
-
-
 
 .welcome-text-container {
     text-align: center;
@@ -366,7 +362,7 @@ button.form-button {
 }
 
 button.form-button:hover {
-    background-color: #218838;
+    background-color: #003903;
 }
 
 
@@ -481,61 +477,73 @@ button.form-button:hover {
 }
 
 #editTaskModal {
-    display: none; 
-    position: fixed; 
-    z-index: 1; 
+    display: none;
+    position: fixed;
+    z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgba(0, 0, 0, 0.7); 
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(255, 255, 255, 0.7); 
 }
+
 
 #editTaskModal .modal-content {
-    background-color: #1e1e1e; 
-    color: #e0e0e0; 
-    margin: 10% auto; 
-    padding: 20px; 
-    border: 1px solid #444; 
-    width: 80%; 
-    max-width: 500px; 
-    border-radius: 10px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+    background-color: #c5eaff;
+    color: #434343;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #444;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
+
+
+.edit-task-form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
 
 #editTaskModal input[type="text"],
-#editTaskModal input[type="datetime-local"],
+#editTaskModal input[type="date"],
 #editTaskModal textarea,
 #editTaskModal select {
-    background-color: #333; 
-    color: #fff; 
-    border: 1px solid #555; 
-    padding: 10px; 
-    border-radius: 5px; 
-    width: 100%; 
-    box-sizing: border-box; 
+    background-color: #ffffff;
+    color: #434343;
+    border: 1px solid #555;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
 }
+
 
 #editTaskModal label {
-    color: #e0e0e0; 
-    font-weight: bold; 
-    margin-bottom: 5px; 
+    color: #000000;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
+
 #editTaskModal button[type="submit"] {
-    background-color: #4CAF50; 
-    color: white; 
-    padding: 12px 25px; 
-    border: none; 
-    border-radius: 5px; 
-    cursor: pointer; 
-    display: block; 
-    margin: 20px auto 0 auto; 
+    background-color: #4CAF50;
+    color: rgb(255, 255, 255);
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto 0 auto;  
     width: 150px; 
     text-align: center; 
 }
 
 #editTaskModal button[type="submit"]:hover {
-    background-color: #45a049; 
+    background-color: #003903;
 }
