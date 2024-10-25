@@ -7,28 +7,35 @@
     <link rel="stylesheet" href="{{ url_for ('static', filename='style.css') }}">
 </head>
 <body>
- 
+
     <div class="login-page">
+        
+        <div class="welcome-text-container">
+            <h1>Welcome to Kanban!</h1>
+            <p>Welcome to our Kanban application. Here, you'll be able to manage your tasks efficiently, track your progress, and collaborate with your team. Let's get started by logging in to your account.</p>
+        </div>
+
         <div class="login-container">
             <h2>Login to Your Account</h2>
- 
+
             <form method="POST" action="{{ url_for('auth.login') }}">
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" placeholder="Enter your email" required>
                 </div>
- 
+
                 <div class="form-group">
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" placeholder="Enter your password" required>
                 </div>
- 
+
                 <button type="submit" class="form-button">Login</button>
             </form>
- 
+
             <p class="login-register-link">Don't have an account? <a href="{{ url_for('auth.register') }}">Register here</a></p>
         </div>
     </div>
- 
+
 </body>
 </html>
+
