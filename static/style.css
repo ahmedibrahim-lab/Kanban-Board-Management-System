@@ -48,7 +48,7 @@ label {
 input[type="date"],
 select {
     background-color: #ffffff;
-    color: #000000;
+    color: #434343;
     border: 1px solid #555;
     padding: 5px;
     border-radius: 5px;
@@ -546,4 +546,8 @@ button.form-button:hover {
 
 #editTaskModal button[type="submit"]:hover {
     background-color: #003903;
+}
+
+input[type="password"] {
+    color:#000000;
 }
