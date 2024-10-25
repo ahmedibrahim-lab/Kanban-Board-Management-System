@@ -79,8 +79,11 @@ Made on 23/10/2024:
 | Date       | Person        | Task                                   |
 |------------|---------------|----------------------------------------|
 | 24-10-2024 | Ahmed         |  Implemented light mode for the kanban board.      |
-| 24-10-2024 | Daniel        |  Adjusted template for login and register pages. |
+| 24-10-2024 | Ahmed         |  Edit feature debugging.      |
+| 24-10-2024 | Daniel        |  Built and filled templates for login page. |
+| 24-10-2024 | Daniel        |  Built and filled templates for register page. |
 | 24-10-2024 | David         |  History feature database implementation.   |
+| 24-10-2024 | David         |  EC2 instance database debugging.   |
 
 
 #### Meeting duration: 25mins
