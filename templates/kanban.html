@@ -31,53 +31,56 @@
         </div>
     </header>   
 
-    <div style="display: flex; justify-content: space-between; margin-top: 20px;"> 
-        <div id="todo-column" style="flex: 1; margin-right: 10px; border-right: 2px solid #ccc; padding-right: 10px;">
-            <h2>To Do</h2>
-            <ul id="todo" class="task-list" ondragover="allowDrop(event)" ondrop="drop(event, 'To Do')">
+    <div class="kanban-container">
+        <div class="kanban-column to-do">
+          <div class="column-title">To Do</div>
+            <div id="todo" class="kanban-column todo task-bubble-column" ondragover="allowDrop(event)" ondrop="drop(event, 'To Do')">
                 {% for task in todo_tasks %}
-                <li id="{{ task[0] }}" class="task-item" draggable="true" ondragstart="drag(event)">
+                <div id="{{ task[0] }}" class="task-bubble" draggable="true" ondragstart="drag(event)">
                     <strong>{{ task[1] }}</strong> <br> 
                     {{ task[2] }} <br>
                     Priority: {{ task[3] }} <br>
                     Due: {{ task[4] }} <br>
+                    <br>
                     <button onclick="openEditModal('{{ task[0] }}', '{{ task[1] }}', '{{ task[2] }}', '{{ task[4] }}', '{{ task[3] }}')">Edit</button>
                     <button onclick="deleteTask('{{ task[0] }}')">Delete</button>
-                </li>
+                </div>
                 {% endfor %}
-            </ul>
+            </div>
         </div>
     
-        <div id="in-progress-column" style="flex: 1; margin-right: 10px; border-right: 2px solid #ccc; padding-right: 10px;">
-            <h2>In Progress</h2>
-            <ul id="in_progress" class="task-list" ondragover="allowDrop(event)" ondrop="drop(event, 'In Progress')">
+        <div class="kanban-column in-progress">
+            <div class="column-title">In Progress</div>
+            <div id="in_progress" class="kanban-column in-progress task-bubble-column" ondragover="allowDrop(event)" ondrop="drop(event, 'In Progress')">
                 {% for task in in_progress_tasks %}
-                <li id="{{ task[0] }}" class="task-item" draggable="true" ondragstart="drag(event)">
+                <div id="{{ task[0] }}" class="task-bubble" draggable="true" ondragstart="drag(event)">
                     <strong>{{ task[1] }}</strong> <br> 
                     {{ task[2] }} <br>
                     Priority: {{ task[3] }} <br>
                     Due: {{ task[4] }} <br>
+                    <br>
                     <button onclick="openEditModal('{{ task[0] }}', '{{ task[1] }}', '{{ task[2] }}', '{{ task[4] }}', '{{ task[3] }}')">Edit</button>
                     <button onclick="deleteTask('{{ task[0] }}')">Delete</button>
-                </li>
+                </div>
                 {% endfor %}
-            </ul>
+            </div>
         </div>
     
-        <div id="done-column" style="flex: 1; padding-left: 10px;">
-            <h2>Done</h2>
-            <ul id="done" class="task-list" ondragover="allowDrop(event)" ondrop="drop(event, 'Done')">
+        <div class="kanban-column done">
+            <div class="column-title">Done</div>
+            <div id="done" class="kanban-column done task-bubble-column" ondragover="allowDrop(event)" ondrop="drop(event, 'Done')">
                 {% for task in done_tasks %}
-                <li id="{{ task[0] }}" class="task-item" draggable="true" ondragstart="drag(event)">
+                <div id="{{ task[0] }}" class="task-bubble" draggable="true" ondragstart="drag(event)">
                     <strong>{{ task[1] }}</strong> <br> 
                     {{ task[2] }} <br>
                     Priority: {{ task[3] }} <br>
                     Due: {{ task[4] }} <br>
+                    <br>
                     <button onclick="openEditModal('{{ task[0] }}', '{{ task[1] }}', '{{ task[2] }}', '{{ task[4] }}', '{{ task[3] }}')">Edit</button>
                     <button onclick="deleteTask('{{ task[0] }}')">Delete</button>
-                </li>
+                </div>
                 {% endfor %}
-            </ul>
+            </div>
         </div>
     </div>
     
@@ -192,28 +195,28 @@
             filterTasks();
         }
 
-    function openEditModal(task_id, task_name, description, due_date, priority) {
-        document.getElementById('editTaskModal').style.display = 'block';
-        document.getElementById('edit_task_name').value = task_name;
-        document.getElementById('edit_description').value = description;
-        document.getElementById('edit_due_date').value = due_date;
-        document.getElementById('edit_priority').value = priority;
-        document.getElementById('editTaskForm').action = `/edit_task/${task_id}`;
-    }
-
-    function closeEditModal() {
-        document.getElementById('editTaskModal').style.display = 'none';
-    }
-
-    function deleteTask(task_id) {
-        if (confirm('Are you sure you want to delete this task?')) {
-            fetch(`/delete_task/${task_id}`, {
-                method: 'POST'
-            }).then(() => {
-                location.reload();
-            });
+        function openEditModal(task_id, task_name, description, due_date, priority) {
+            document.getElementById('editTaskModal').style.display = 'block';
+            document.getElementById('edit_task_name').value = task_name;
+            document.getElementById('edit_description').value = description;
+            document.getElementById('edit_due_date').value = due_date;
+            document.getElementById('edit_priority').value = priority;
+            document.getElementById('editTaskForm').action = `/edit_task/${task_id}`;
         }
-    }
+
+        function closeEditModal() {
+            document.getElementById('editTaskModal').style.display = 'none';
+        }
+
+        function deleteTask(task_id) {
+            if (confirm('Are you sure you want to delete this task?')) {
+                fetch(`/delete_task/${task_id}`, {
+                    method: 'POST'
+                }).then(() => {
+                    location.reload();
+                });
+            }
+        }
     </script>
 </body>
 </html>
