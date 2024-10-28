@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session, jsonify
-from models import create_task, get_tasks_by_user, assign_task, get_task_assignments, edit_task, delete_task, update_task_status
+from models import create_task, get_tasks_by_user, get_task_assignments, edit_task, delete_task, update_task_status
 from datetime import datetime
 
 tasks_bp = Blueprint('tasks', __name__)
