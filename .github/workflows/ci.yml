@@ -33,4 +33,4 @@ jobs:
           DATABASE_PASSWORD: 'root'  
           DATABASE_NAME: 'kanban_ms'  
         run: |
-          python -m unittest discover tests  
+          python -m unittest discover -s tests  
