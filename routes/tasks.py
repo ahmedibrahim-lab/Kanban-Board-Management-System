@@ -49,15 +49,6 @@ def view_tasks():
                            current_priority=priority,
                            current_due_date=due_date_str)
 
-@tasks_bp.route('/assign_task', methods=['POST'])
-def assign_task_to_user():
-    task_id = request.form['task_id']
-    user_id = request.form['user_id']
-    start_time = request.form['start_time']
-    end_time = request.form['end_time']
-    assign_task(task_id, user_id, start_time, end_time)
-    return redirect(url_for('tasks.view_tasks'))
-
 @tasks_bp.route('/filter_tasks', methods=['GET'])
 def filter_tasks():
     return view_tasks()  
@@ -79,7 +70,7 @@ def create_task_route():
     if 'user_id' not in session:
         return redirect(url_for('auth.login'))
     
-    user_id = session['user_id']
+    created_by = session['user_id']
     task_name = request.form['task_name']
     description = request.form['description']
     priority = request.form['priority']
@@ -87,7 +78,7 @@ def create_task_route():
     stage = request.form['stage']
 
     # Call the model to create a new task
-    create_task(task_name, description, priority, deadline, stage, user_id)
+    create_task(task_name, description, priority, deadline, stage, created_by)
 
     return redirect(url_for('tasks.view_tasks'))
 
