@@ -95,3 +95,27 @@ INSERT INTO task_assignment (task_id, user_id, start_time, assigned_by) VALUES
         (SELECT user_id FROM kanban_user WHERE email = 'alice.johnson@codecompany.com'),
         '2024-10-24 12:00:00',
         (SELECT user_id FROM kanban_user WHERE email = 'charlie.davis@codecompany.com'));
+
+-- Insert into task_stage_log table     
+ INSERT INTO task_stage_log (task_id, task_name, stage, changed_at) VALUES
+ 	((SELECT task_id FROM task WHERE task_name = 'Design Homepage'), 'Design Homepage', 1, '2024-10-20 08:00:00'),
+ 	((SELECT task_id FROM task WHERE task_name = 'Design Homepage'), 'Design Homepage', 2, '2024-10-22 14:00:00'),
+ 	((SELECT task_id FROM task WHERE task_name = 'Write API Documentation'), 'Write API Documentation', 1, '2024-10-18 10:00:00'),
+ 	((SELECT task_id FROM task WHERE task_name = 'Write API Documentation'), 'Write API Documentation', 2, '2024-10-21 11:30:00'),
+ 	((SELECT task_id FROM task WHERE task_name = 'Fix Login Bug'), 'Fix Login Bug', 1, '2024-10-15 09:00:00'),
+ 	((SELECT task_id FROM task WHERE task_name = 'Fix Login Bug'), 'Fix Login Bug', 2, '2024-10-23 15:00:00'),
+ 	((SELECT task_id FROM task WHERE task_name = 'Fix Login Bug'), 'Fix Login Bug', 3, '2024-10-24 16:00:00'),
+ 	((SELECT task_id FROM task WHERE task_name = 'Optimize Database'), 'Optimize Database', 1, '2024-10-20 09:00:00'),
+ 	((SELECT task_id FROM task WHERE task_name = 'Create Unit Tests'), 'Create Unit Tests', 1, '2024-10-20 09:00:00');
+
+ -- Insert into user_activity_log table 
+ INSERT INTO user_activity_log (user_id, user_name, modified_table, modified_field, modification_time) VALUES
+ 	((SELECT user_id FROM kanban_user WHERE email = 'alice.johnson@codecompany.com'), 'Alice Johnson', 'task', 'stage', '2024-10-22 14:00:00'),
+ 	((SELECT user_id FROM kanban_user WHERE email = 'bob.smith@codecompany.com'), 'Bob Smith', 'task_assignment', 'start_time', '2024-10-21 11:00:00'),
+ 	((SELECT user_id FROM kanban_user WHERE email = 'charlie.davis@codecompany.com'), 'Charlie Davis', 'task', 'priority', '2024-10-23 10:30:00'),
+ 	((SELECT user_id FROM kanban_user WHERE email = 'diana.moore@codecompany.com'), 'Diana Moore', 'kanban_user', 'email', '2024-10-24 13:15:00'),
+ 	((SELECT user_id FROM kanban_user WHERE email = 'eve.adams@codecompany.com'), 'Eve Adams', 'task', 'deadline', '2024-10-25 11:45:00'),
+ 	((SELECT user_id FROM kanban_user WHERE email = 'alice.johnson@codecompany.com'), 'Alice Johnson', 'task_assignment', 'end_time', '2024-10-25 16:00:00'),
+ 	((SELECT user_id FROM kanban_user WHERE email = 'bob.smith@codecompany.com'), 'Bob Smith', 'task_stage_log', 'stage', '2024-10-24 09:00:00');
+
+COMMIT;

@@ -65,3 +65,25 @@ Made on 23/10/2024:
 
 
 #### Meeting duration: 15mins
+
+## Meeting 3 - Presentation - 25/10/2024 - Ahmed Ibrahim
+
+Made on 23/10/2024:
+* Daniel: Worked with shilpa on new design for kanban. Working on additional features (light/dark mode toggle)
+* Ahmed: implemented kanban redesign and debugged. Working on additional features (overdue and impending notifications)
+* David: Static IP added for EC2 and debugged. Working on additional feature (history loggin)
+  
+
+# Timesheet 
+
+| Date       | Person        | Task                                   |
+|------------|---------------|----------------------------------------|
+| 24-10-2024 | Ahmed         |  Implemented light mode for the kanban board.      |
+| 24-10-2024 | Ahmed         |  Edit feature debugging.      |
+| 24-10-2024 | Daniel        |  Built and filled templates for login page. |
+| 24-10-2024 | Daniel        |  Built and filled templates for register page. |
+| 24-10-2024 | David         |  History feature database implementation.   |
+| 24-10-2024 | David         |  EC2 instance database debugging.   |
+
+
+#### Meeting duration: 25mins
