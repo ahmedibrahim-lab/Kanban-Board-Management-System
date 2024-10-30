@@ -10,30 +10,15 @@
     <header style="display: flex; justify-content: space-between; align-items: center;">
         <h1>Kanban Board</h1>
         <div style="display: flex; justify-content: flex-end; gap: 20px; align-items: center;">
+            <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
             <button onclick="openTaskModal()">Create New Task</button>
-            
-            <form id="taskFilterForm" method="GET" action="{{ url_for('tasks.filter_tasks') }}" style="display: flex; gap: 10px; align-items: center;">
-                <div>
-                    <label for="priority">Priority:</label>
-                    <select id="priorityFilter" name="priority">
-                        <option value="" {% if current_priority == '' %}selected{% endif %}>All</option>
-                        <option value="Low" {% if current_priority == 'Low' %}selected{% endif %}>Low</option>
-                        <option value="Medium" {% if current_priority == 'Medium' %}selected{% endif %}>Medium</option>
-                        <option value="High" {% if current_priority == 'High' %}selected{% endif %}>High</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="due_date">Due Date:</label>
-                    <input type="date" id="dueDateFilter" name="due_date" value="{{ current_due_date }}">
-                </div>
-                <button type="button" onclick="resetFilters()">Reset Filters</button>
-            </form>
+            <button onclick="openFilterModal()">Filter Tasks</button>
         </div>
-    </header>   
+    </header>  
 
     <div class="kanban-container">
         <div class="kanban-column to-do">
-          <div class="column-title">To Do</div>
+            <div class="column-title">To Do</div>
             <div id="todo" class="kanban-column todo task-bubble-column" ondragover="allowDrop(event)" ondrop="drop(event, 'To Do')">
                 {% for task in todo_tasks %}
                 <div id="{{ task[0] }}" class="task-bubble" draggable="true" ondragstart="drag(event)">
@@ -84,6 +69,7 @@
         </div>
     </div>
     
+    <!-- Create Task Modal -->
     <div id="createTaskModal" class="modal">
         <div class="modal-content">
             <span id="closeModal" onclick="closeTaskModal()">&times;</span>
@@ -115,6 +101,32 @@
         </div>
     </div>
 
+    <!-- Filter Task Modal -->
+    <div id="filterTaskModal" class="modal">
+        <div class="modal-content">
+            <span id="closeFilterModal" onclick="closeFilterModal()">&times;</span>
+            <h2>Filter Tasks</h2>
+            <form id="taskFilterForm" method="GET" action="{{ url_for('tasks.filter_tasks') }}">
+                <div class="create-task-form-group">
+                    <label for="priority">Priority:</label>
+                    <select id="priorityFilter" name="priority">
+                        <option value="" {% if current_priority == '' %}selected{% endif %}>All</option>
+                        <option value="Low" {% if current_priority == 'Low' %}selected{% endif %}>Low</option>
+                        <option value="Medium" {% if current_priority == 'Medium' %}selected{% endif %}>Medium</option>
+                        <option value="High" {% if current_priority == 'High' %}selected{% endif %}>High</option>
+                    </select>
+                </div>
+                <div class="create-task-form-group">
+                    <label for="due_date">Due Date:</label>
+                    <input type="date" id="dueDateFilter" name="due_date" value="{{ current_due_date }}">
+                </div>
+                <button type="button" onclick="resetFilters()">Reset Filters</button>
+                <button type="submit">Apply Filters</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Task Modal -->
     <div id="editTaskModal" class="modal" style="display: none;"> 
         <div class="modal-content">
             <span id="closeEditModal" onclick="closeEditModal()">&times;</span>
@@ -145,7 +157,6 @@
         </div>
     </div>
     
-
     <script>
         var updateTaskStatusUrl = "{{ url_for('tasks.update_status') }}";
 
@@ -160,6 +171,14 @@
 
         function closeTaskModal() {
             document.getElementById('createTaskModal').style.display = 'none';
+        }
+
+        function openFilterModal() {
+            document.getElementById('filterTaskModal').style.display = 'block';
+        }
+
+        function closeFilterModal() {
+            document.getElementById('filterTaskModal').style.display = 'none';
         }
 
         function drag(event) {
@@ -217,6 +236,21 @@
                 });
             }
         }
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+
+        // Apply Dark Mode on Page Load if Set
+        document.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+            }
+        });
     </script>
 </body>
 </html>
