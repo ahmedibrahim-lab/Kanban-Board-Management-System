@@ -16,6 +16,10 @@ class TaskTests(unittest.TestCase):
         cls.conn.close()
     
     def setUp(self):
+        query = """
+            DELETE FROM kanban_user WHERE name IN ('Task User');
+        """
+        self.cursor.execute(query)
         self.cursor.execute("INSERT INTO kanban_user (name, password_hash, email) VALUES (%s, %s, %s)",
                             ("Task User", generate_password_hash("taskpassword"), "taskuser@example.com"))
         self.user_id = self.cursor.lastrowid
