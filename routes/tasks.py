@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session, jsonify
-from models import create_task, get_tasks_by_user, get_task_assignments, edit_task, delete_task, update_task_status
+from models import create_task, get_tasks_by_user, get_task_assignments, edit_task, delete_task, update_task_status, get_task_history
 from datetime import datetime
 
 tasks_bp = Blueprint('tasks', __name__)
@@ -102,3 +102,11 @@ def delete_task_route(task_id):
     delete_task(task_id)
 
     return jsonify({'success': True})
+
+@tasks_bp.route('/get_task_history/<int:task_id>', methods=['GET'])
+def get_task_history_route(task_id):
+    try:
+        history_data = get_task_history(task_id)
+        return jsonify(history_data)
+    except Exception as e:
+        return jsonify({"error": str(e)})
