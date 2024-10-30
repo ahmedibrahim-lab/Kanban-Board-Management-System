@@ -658,3 +658,74 @@ button.form-button:hover {
 #editTaskModal button[type="submit"]:hover {
     background-color: #45a049; 
 }
+
+.info-icon {
+    cursor: pointer;
+    color: blue; 
+    margin-left: 95%; 
+}
+
+#history-modal {
+    display: none; 
+    position: fixed;
+    z-index: 1001; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); 
+}
+
+#history-modal .modal-content {
+    background-color: #e0c8ff; 
+    color: #000; 
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #ccc; 
+    border-radius: 10px; 
+    width: 80%; 
+    max-width: 500px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+}
+
+#history-modal .close-history {
+    color: #000000;
+    margin-left: 95%;
+    margin-bottom: 100%;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#history-modal .close-history:hover {
+    color: #ffffff;
+}
+
+.history-bubble {
+    background-color: #ffffff; 
+    border: 1px solid #009688; 
+    border-radius: 40px; 
+    color:#000;
+    padding: 20px;
+    margin: 20px 0; 
+    position: relative; 
+    max-width: 100%; 
+}
+
+.history-bubble::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -17.5%; 
+    transform: translateX(-50%) ; 
+    border-width: 15px; 
+    border-style: solid;
+    border-color: transparent transparent #9900ff88 transparent; 
+}
+
+#datetime {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-right: 20px;
+    color:rgb(0, 0, 0);
+}

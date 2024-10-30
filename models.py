@@ -117,4 +117,18 @@ def get_task_assignments(user_id):
     conn.close()
     return assignments
 
+def get_task_history(task_id):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    query = """
+        SELECT stage, changed_at
+        FROM task_stage_log
+        WHERE task_id = %s
+        ORDER BY changed_at DESC
+    """
+    cursor.execute(query, (task_id,))
+    history = cursor.fetchall()
+    cursor.close()
     
+    history_data = [{"stage": row[0], "date":row[1].strftime('%Y-%m-%d'),"time": row[1].strftime('%H:%M:%S')} for row in history]
+    return history_data

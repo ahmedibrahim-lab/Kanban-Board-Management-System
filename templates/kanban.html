@@ -10,11 +10,12 @@
     <header style="display: flex; justify-content: space-between; align-items: center;">
         <h1>Kanban Board</h1>
         <div style="display: flex; justify-content: flex-end; gap: 20px; align-items: center;">
+            <div id="datetime"></div>
             <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
             <button onclick="openTaskModal()">Create New Task</button>
             <button onclick="openFilterModal()">Filter Tasks</button>
         </div>
-    </header>  
+    </header> 
 
     <div class="kanban-container">
         <div class="kanban-column to-do">
@@ -22,10 +23,17 @@
             <div id="todo" class="kanban-column todo task-bubble-column" ondragover="allowDrop(event)" ondrop="drop(event, 'To Do')">
                 {% for task in todo_tasks %}
                 <div id="{{ task[0] }}" class="task-bubble" draggable="true" ondragstart="drag(event)">
+                    <i class="info-icon" onclick="showTaskHistory('{{ task[0] }}')">i</i>
                     <strong>{{ task[1] }}</strong> <br> 
                     {{ task[2] }} <br>
                     Priority: {{ task[3] }} <br>
                     Due: {{ task[4] }} <br>
+                    {{datetime}} <br>
+                    <span class="task-status">
+                        {% if task[5] == today %}
+                            <span title="Due Today" style="color: blue;">&#10148;</span> <!-- Due Today icon -->
+                        {% endif %}
+                    </span>
                     <br>
                     <button onclick="openEditModal('{{ task[0] }}', '{{ task[1] }}', '{{ task[2] }}', '{{ task[4] }}', '{{ task[3] }}')">Edit</button>
                     <button onclick="deleteTask('{{ task[0] }}')">Delete</button>
@@ -39,6 +47,7 @@
             <div id="in_progress" class="kanban-column in-progress task-bubble-column" ondragover="allowDrop(event)" ondrop="drop(event, 'In Progress')">
                 {% for task in in_progress_tasks %}
                 <div id="{{ task[0] }}" class="task-bubble" draggable="true" ondragstart="drag(event)">
+                    <i class="info-icon" onclick="showTaskHistory('{{ task[0] }}')">i</i>
                     <strong>{{ task[1] }}</strong> <br> 
                     {{ task[2] }} <br>
                     Priority: {{ task[3] }} <br>
@@ -56,6 +65,7 @@
             <div id="done" class="kanban-column done task-bubble-column" ondragover="allowDrop(event)" ondrop="drop(event, 'Done')">
                 {% for task in done_tasks %}
                 <div id="{{ task[0] }}" class="task-bubble" draggable="true" ondragstart="drag(event)">
+                    <i class="info-icon" onclick="showTaskHistory('{{ task[0] }}')">i</i>
                     <strong>{{ task[1] }}</strong> <br> 
                     {{ task[2] }} <br>
                     Priority: {{ task[3] }} <br>
@@ -156,6 +166,16 @@
             </form>
         </div>
     </div>
+
+    <!-- Task History Modal -->
+    <div id="history-modal" class="history-modal">
+        <div class="modal-content">
+            <span class="close-history" onclick="closeHistoryModal()">&times;</span>
+            <div class="column-title">Done</div>
+            <div id="history-content">
+            </div>
+        </div>
+    </div>
     
     <script>
         var updateTaskStatusUrl = "{{ url_for('tasks.update_status') }}";
@@ -251,6 +271,77 @@
                 document.body.classList.add('dark-mode');
             }
         });
+
+        function showTaskHistory(taskId) {
+            console.log("Opening history modal for task ID:", taskId);
+
+            fetch(`/get_task_history/${taskId}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log("Received task history data:", data);
+
+                    if (!Array.isArray(data)) {
+                        console.error('Expected an array but received:', data);
+                        document.getElementById('history-content').innerHTML = '<p>No history found.</p>';
+                        document.getElementById('history-modal').style.display = 'block';
+                        return;
+                    }
+
+                    const historyContent = document.getElementById('history-content');
+                    historyContent.innerHTML = '';  // Clear previous entries
+
+                    data.forEach(entry => {
+                        const historyEntry = document.createElement('div');
+                        historyEntry.className = 'history-bubble';
+                        historyEntry.innerHTML = `<strong>Stage:</strong> ${toStageString(entry.stage)} <br> 
+                                                <strong>Date:</strong> ${entry.date} <br> 
+                                                <strong>Time:</strong> ${entry.time}`;
+                        historyContent.appendChild(historyEntry);
+                    });
+
+                    document.getElementById('history-modal').style.display = 'block';
+                })
+                .catch(error => console.error('Error fetching task history:', error));
+        }
+
+        function closeHistoryModal() {
+            document.getElementById('history-modal').style.display = 'none';
+        }
+
+        function toStageString(intStage) {
+            switch (intStage) {
+                case 1:
+                    return 'To Do';
+                case 2:
+                    return 'In Progress';
+                case 3:
+                    return 'Done';
+                default:
+                    return 'Unknown Stage'; 
+            }
+        }
+
+        function convertToDate(dateString) {
+            if (dateString) {
+                return new Date(dateString); 
+            }
+            return null; 
+        }
+
+        function updateDateTime() {
+            var now = new Date();
+            var datetime = now.toLocaleString(); 
+            document.getElementById("datetime").innerHTML = datetime;
+        }
+        
+        updateDateTime();
+        setInterval(updateDateTime, 999);
+
     </script>
 </body>
 </html>
