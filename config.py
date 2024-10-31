@@ -1,7 +1,7 @@
 import os
 
 class Config:
-    MYSQL_HOST = '16.171.3.22'  
+    MYSQL_HOST = '13.60.173.106'  
     MYSQL_PORT = 3306
     #MYSQL_HOST = 'localhost'  
     #MYSQL_PORT = 3399             
