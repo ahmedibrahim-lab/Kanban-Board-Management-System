@@ -1,10 +1,9 @@
-
+/* Light Mode (default) */
 body {
     background-color: #ffffff;
     color: #000000;
     font-family: Arial, sans-serif;
 }
-
 
 header {
     background-color: #c5eaff;
@@ -44,11 +43,10 @@ label {
     color: #000000;
 }
 
-
 input[type="date"],
 select {
-    background-color: #ffffff;
-    color: #434343;
+    background-color: #333;
+    color: #fff;
     border: 1px solid #555;
     padding: 5px;
     border-radius: 5px;
@@ -71,27 +69,25 @@ button[type="submit"]:hover {
     background-color: #1976d2;
 }
 
-
 div {
-    color: #000000;
+    color: #e0e0e0;
 }
 
 h2 {
-    color: #000000;
+    color: #ffffff;
 }
 
 div[id^="createTaskModal"] {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #333;
+    color: #fff;
 }
 
 .modal-content {
-    background-color: #ffffff;
+    background-color: #1c1c1c;
     border-radius: 10px;
     padding: 20px;
     border: 1px solid #444;
 }
-
 
 #createTaskModal {
     display: none;
@@ -102,13 +98,12 @@ div[id^="createTaskModal"] {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(255, 255, 255, 0.7); 
+    background-color: rgba(0, 0, 0, 0.7); 
 }
 
-
 #createTaskModal .modal-content {
-    background-color: #d0ffec;
-    color: #434343;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
     margin: 10% auto;
     padding: 20px;
     border: 1px solid #444;
@@ -118,7 +113,6 @@ div[id^="createTaskModal"] {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-
 .create-task-form-group {
     display: flex;
     flex-direction: column;
@@ -126,13 +120,12 @@ div[id^="createTaskModal"] {
     gap: 10px;
 }
 
-
 #createTaskModal input[type="text"],
 #createTaskModal input[type="date"],
 #createTaskModal textarea,
 #createTaskModal select {
-    background-color: #ffffff;
-    color: #434343;
+    background-color: #333;
+    color: #fff;
     border: 1px solid #555;
     padding: 10px;
     border-radius: 5px;
@@ -140,17 +133,15 @@ div[id^="createTaskModal"] {
     box-sizing: border-box;
 }
 
-
 #createTaskModal label {
-    color: #000000;
+    color: #e0e0e0;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
-
 #createTaskModal button[type="submit"] {
     background-color: #4CAF50;
-    color: rgb(255, 255, 255);
+    color: white;
     padding: 12px 25px;
     border: none;
     border-radius: 5px;
@@ -162,9 +153,8 @@ div[id^="createTaskModal"] {
 }
 
 #createTaskModal button[type="submit"]:hover {
-    background-color: #003903;
+    background-color: #45a049;
 }
-
 
 .task-item {
     background-color: #e9de78 !important; 
@@ -189,10 +179,139 @@ div[id^="createTaskModal"] {
     min-height: 150px;
 }
 
-
 .task-list.dragging-over {
     background-color: #555;
 }
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.dark-mode header {
+    background-color: #333;
+    color: #ffffff;
+}
+
+.dark-mode button {
+    background-color: #444;
+    color: #e0e0e0;
+}
+
+.dark-mode button:hover {
+    background-color: #666;
+}
+
+.dark-mode input[type="date"],
+.dark-mode select {
+    background-color: #555;
+    color: #e0e0e0;
+    border: 1px solid #777;
+}
+
+.dark-mode .task-item {
+    background-color: #333;
+    color: #e0e0e0;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .modal-content {
+    background-color: #222;
+    color: #e0e0e0;
+    border: 1px solid #555;
+}
+
+.dark-mode .task-list {
+    background-color: #2e2e2e;
+    border: 1px solid #444;
+}
+
+.dark-mode .task-list.dragging-over {
+    background-color: #3c3c3c;
+}
+
+.dark-mode .login-page {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.dark-mode .welcome-text-container {
+    color: #e0e0e0;
+}
+
+.dark-mode .login-container {
+    background-color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+}
+
+.dark-mode .login-container h2 {
+    color: #ffffff;
+}
+
+.dark-mode .form-group label {
+    color: #e0e0e0;
+}
+
+.dark-mode .form-group input {
+    background-color: #555;
+    color: #e0e0e0;
+    border: 1px solid #777;
+}
+
+.dark-mode button.form-button {
+    background-color: #555;
+    color: #e0e0e0;
+}
+
+.dark-mode button.form-button:hover {
+    background-color: #777;
+}
+
+.dark-mode .login-register-link a {
+    color: #4ea3ff;
+}
+
+.dark-mode .register-container {
+    background-color: #222;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+}
+
+.dark-mode .register-container h2 {
+    color: #ffffff;
+}
+
+.dark-mode .form-group input {
+    background-color: #333;
+    color: #e0e0e0;
+    border: 1px solid #555;
+}
+
+/* Dark Mode Styles for Filter Task Modal */
+#filterTaskModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#filterTaskModal .modal-content {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #444;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
 
 .login-page {
     display: flex;
@@ -270,7 +389,7 @@ button.form-button {
 }
 
 button.form-button:hover {
-    background-color: #003903;
+    background-color: #218838;
 }
 
 .login-register-link {
@@ -286,6 +405,10 @@ button.form-button:hover {
 .login-register-link a:hover {
     text-decoration: underline;
 }
+
+
+
+
 
 .welcome-text-container {
     text-align: center;
@@ -362,7 +485,7 @@ button.form-button {
 }
 
 button.form-button:hover {
-    background-color: #003903;
+    background-color: #218838;
 }
 
 
@@ -424,7 +547,7 @@ button.form-button:hover {
     width: 100%;
     padding-top: 20px;
 }
-  
+
 .kanban-column {
     flex: 1;
     padding: 10px;
@@ -434,19 +557,19 @@ button.form-button:hover {
     flex-direction: column;
     gap: 15px;
 }
-  
+
 .kanban-column.to-do {
     background-color: #ffcfcf;
 }
-  
+
 .kanban-column.in-progress {
     background-color: #ffe79a;
 }
-  
+
 .kanban-column.done {
     background-color: #a2feb6;
 }
-  
+
 .column-title {
     font-size: 24px; 
     font-weight: bold; 
@@ -477,77 +600,132 @@ button.form-button:hover {
 }
 
 #editTaskModal {
-    display: none;
-    position: fixed;
-    z-index: 1;
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
     left: 0;
     top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(255, 255, 255, 0.7); 
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.7); 
 }
-
 
 #editTaskModal .modal-content {
-    background-color: #c5eaff;
-    color: #434343;
-    margin: 10% auto;
-    padding: 20px;
-    border: 1px solid #444;
-    width: 80%;
-    max-width: 500px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background-color: #1e1e1e; 
+    color: #e0e0e0; 
+    margin: 10% auto; 
+    padding: 20px; 
+    border: 1px solid #444; 
+    width: 80%; 
+    max-width: 500px; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
 }
-
-
-.edit-task-form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-    gap: 10px;
-}
-
 
 #editTaskModal input[type="text"],
-#editTaskModal input[type="date"],
+#editTaskModal input[type="datetime-local"],
 #editTaskModal textarea,
 #editTaskModal select {
-    background-color: #ffffff;
-    color: #434343;
-    border: 1px solid #555;
-    padding: 10px;
-    border-radius: 5px;
-    width: 100%;
-    box-sizing: border-box;
+    background-color: #333; 
+    color: #fff; 
+    border: 1px solid #555; 
+    padding: 10px; 
+    border-radius: 5px; 
+    width: 100%; 
+    box-sizing: border-box; 
 }
-
 
 #editTaskModal label {
-    color: #000000;
-    font-weight: bold;
-    margin-bottom: 5px;
+    color: #e0e0e0; 
+    font-weight: bold; 
+    margin-bottom: 5px; 
 }
 
-
 #editTaskModal button[type="submit"] {
-    background-color: #4CAF50;
-    color: rgb(255, 255, 255);
-    padding: 12px 25px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    display: block;
-    margin: 20px auto 0 auto;  
+    background-color: #4CAF50; 
+    color: white; 
+    padding: 12px 25px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    display: block; 
+    margin: 20px auto 0 auto; 
     width: 150px; 
     text-align: center; 
 }
 
 #editTaskModal button[type="submit"]:hover {
-    background-color: #003903;
+    background-color: #45a049; 
 }
 
-input[type="password"] {
-    color:#000000;
+.info-icon {
+    cursor: pointer;
+    color: blue; 
+    margin-left: 95%; 
+}
+
+#history-modal {
+    display: none; 
+    position: fixed;
+    z-index: 1001; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); 
+}
+
+#history-modal .modal-content {
+    background-color: #e0c8ff; 
+    color: #000; 
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #ccc; 
+    border-radius: 10px; 
+    width: 80%; 
+    max-width: 500px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+}
+
+#history-modal .close-history {
+    color: #000000;
+    margin-left: 95%;
+    margin-bottom: 100%;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#history-modal .close-history:hover {
+    color: #ffffff;
+}
+
+.history-bubble {
+    background-color: #ffffff; 
+    border: 1px solid #009688; 
+    border-radius: 40px; 
+    color:#000;
+    padding: 20px;
+    margin: 20px 0; 
+    position: relative; 
+    max-width: 100%; 
+}
+
+.history-bubble::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -17.5%; 
+    transform: translateX(-50%) ; 
+    border-width: 15px; 
+    border-style: solid;
+    border-color: transparent transparent #9900ff88 transparent; 
+}
+
+#datetime {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-right: 20px;
+    color:rgb(0, 0, 0);
 }
