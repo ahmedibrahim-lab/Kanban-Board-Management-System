@@ -298,7 +298,7 @@
                     data.forEach(entry => {
                         const historyEntry = document.createElement('div');
                         historyEntry.className = 'history-bubble';
-                        historyEntry.innerHTML = `<strong>Stage:</strong> ${toStageString(entry.stage)} <br> 
+                        historyEntry.innerHTML = `<strong>Stage:</strong> ${entry.stage} <br> 
                                                 <strong>Date:</strong> ${entry.date} <br> 
                                                 <strong>Time:</strong> ${entry.time}`;
                         historyContent.appendChild(historyEntry);
@@ -311,19 +311,6 @@
 
         function closeHistoryModal() {
             document.getElementById('history-modal').style.display = 'none';
-        }
-
-        function toStageString(intStage) {
-            switch (intStage) {
-                case 1:
-                    return 'To Do';
-                case 2:
-                    return 'In Progress';
-                case 3:
-                    return 'Done';
-                default:
-                    return 'Unknown Stage'; 
-            }
         }
 
         function convertToDate(dateString) {
