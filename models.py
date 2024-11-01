@@ -1,5 +1,27 @@
+from flask import session
 import mysql.connector
 from config import Config
+
+
+def user_activity_log(table_name, action_type):
+    def function_decorator(func):
+        def wrapper(*args, **kwargs):
+            func(*args, **kwargs)
+
+            user_id = '777' # int(session['user_id'])
+            user_name = session['user_name']
+
+            conn = get_db_connection()
+            cursor = conn.cursor()
+            cursor.execute("""
+                CALL insert_user_activity_log(%s, %s, %s, %s);
+            """, (user_id, user_name, table_name, action_type))
+            conn.commit()
+            cursor.close()
+            conn.close()
+
+        return wrapper
+    return function_decorator
 
 def get_db_connection():
     connection = mysql.connector.connect(
@@ -33,6 +55,7 @@ def get_user_by_email(email):
     return user
 
 # Task operations
+@user_activity_log('task', 'creating new task')
 def create_task(task_name, description, priority, deadline, stage, created_by):
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -57,6 +80,7 @@ def get_tasks_by_user(user_id):
     conn.close()
     return tasks
 
+@user_activity_log('task', 'update task status')
 def update_task_status(task_id, new_stage):
     """Update the status of a task by task_id."""
     conn = get_db_connection()
@@ -70,6 +94,7 @@ def update_task_status(task_id, new_stage):
     cursor.close()
     conn.close()
 
+@user_activity_log('task', 'edit task')
 def edit_task(task_id, task_name, description, deadline, priority):
     """Edit a task by task_id."""
     conn = get_db_connection()
@@ -83,6 +108,7 @@ def edit_task(task_id, task_name, description, deadline, priority):
     cursor.close()
     conn.close()
 
+@user_activity_log('task', 'delete task')
 def delete_task(task_id):
     """Delete a task by task_id."""
     conn = get_db_connection()
