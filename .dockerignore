@@ -1,0 +1,8 @@
+__pycache__/
+.github/
+ci.yml
+.git/
+README.md
+231024_Daniel.pptx
+*.gitignore
+create_docker_instructions.txt

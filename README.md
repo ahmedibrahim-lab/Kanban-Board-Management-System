@@ -14,6 +14,8 @@
 * Daniel will be creating the initial templates
 * Ahmed will handle routes and models
 
+#### Meeting duration: 15mins
+
 # Timesheet
 
 | Date       | Person        | Task                                   |
@@ -28,3 +30,60 @@
 
 
 ## Meeting 2 - 23/10/2024 - Daniel Hewitt
+
+* Daniel Will finish HTML templates
+* Ahmed will test models and routes using local database
+* David will set up sample data and set up the EC2
+
+# Timesheet 
+
+| Date       | Person        | Task                                   |
+|------------|---------------|----------------------------------------|
+| 23-10-2024 | Ahmed         |  tested models                         |
+| 22-10-2024 | David         |  Set up EC2                            |
+| 22-10-2024 | David         |  set up sample data                    |
+| 22-10-2024 | Ahmed         |  tested routes                         |
+| 22-10-2024 | Daniel        |  Finished HTML templates               |
+| 22-10-2024 | Ahmed         |  first implementation of tasks         |
+
+#### Meeting duration: 15mins
+
+## Meeting 2 - 24/10/2024 - David Szabo
+
+Made on 23/10/2024:
+* Daniel: kanban board with sticky notes with filtering.
+* Ahmed: authentication system, DB connectivity
+* David: DB debug, sample datas, EC2 installation
+
+# Timesheet 
+
+| Date       | Person        | Task                                   |
+|------------|---------------|----------------------------------------|
+| 24-10-2024 | Ahmed         |  further debugging, optimazition       |
+| 24-10-2024 | Daniel        |  finish the css template and kanban    |
+| 24-10-2024 | David         |  DB storage fix, additional features   |
+
+
+#### Meeting duration: 15mins
+
+## Meeting 3 - Presentation - 25/10/2024 - Ahmed Ibrahim
+
+Made on 23/10/2024:
+* Daniel: Worked with shilpa on new design for kanban. Working on additional features (light/dark mode toggle)
+* Ahmed: implemented kanban redesign and debugged. Working on additional features (overdue and impending notifications)
+* David: Static IP added for EC2 and debugged. Working on additional feature (history loggin)
+  
+
+# Timesheet 
+
+| Date       | Person        | Task                                   |
+|------------|---------------|----------------------------------------|
+| 24-10-2024 | Ahmed         |  Implemented light mode for the kanban board.      |
+| 24-10-2024 | Ahmed         |  Edit feature debugging.      |
+| 24-10-2024 | Daniel        |  Built and filled templates for login page. |
+| 24-10-2024 | Daniel        |  Built and filled templates for register page. |
+| 24-10-2024 | David         |  History feature database implementation.   |
+| 24-10-2024 | David         |  EC2 instance database debugging.   |
+
+
+#### Meeting duration: 25mins
