@@ -37,11 +37,7 @@ CREATE TABLE task_stage_log
 (
 	task_id bigint UNSIGNED NOT NULL,
 	task_name varchar(50) NOT NULL,
-<<<<<<< HEAD:mysql/kanban_ms_ddl.sql
 	stage enum('To Do','In Progress','Done') NOT NULL,
-=======
-	stage SMALLINT NOT NULL,			/* 1 - to do, 2 - in progress, 3 - done */
->>>>>>> 90119edb0a7f289a785412d936b5b91ac1715fd6:mysql/kanban_ms ddl.sql
 	changed_at timestamp NOT NULL DEFAULT now()
 );
 
@@ -50,11 +46,7 @@ CREATE TABLE user_activity_log
 	user_id int UNSIGNED NOT NULL,
 	user_name varchar (50),
 	modified_table varchar(50) NOT NULL,
-<<<<<<< HEAD:mysql/kanban_ms_ddl.sql
 	action_type varchar(50) NOT NULL,
-=======
-	modified_field varchar(50) NOT NULL,
->>>>>>> 90119edb0a7f289a785412d936b5b91ac1715fd6:mysql/kanban_ms ddl.sql
 	modification_time timestamp NOT NULL DEFAULT now()
 );
 
