@@ -1,5 +1,3 @@
-USE kanban_ms;
-
 delimiter //
 
 CREATE PROCEDURE insert_task_stage_log (IN task_id bigint, IN task_name varchar(50), IN stage varchar(15))
@@ -39,4 +37,3 @@ BEGIN
 	VALUES (user_id, user_name, modified_table, action_type);	
 END;
 //
-delimiter ;
