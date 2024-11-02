@@ -1,8 +1,3 @@
--- drop database kanban_ms
-CREATE DATABASE kanban_ms;
-
-USE kanban_ms;
-
 CREATE TABLE kanban_user
 (
 	user_id int UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -42,7 +37,11 @@ CREATE TABLE task_stage_log
 (
 	task_id bigint UNSIGNED NOT NULL,
 	task_name varchar(50) NOT NULL,
+<<<<<<< HEAD:mysql/kanban_ms_ddl.sql
+	stage enum('To Do','In Progress','Done') NOT NULL,
+=======
 	stage SMALLINT NOT NULL,			/* 1 - to do, 2 - in progress, 3 - done */
+>>>>>>> 90119edb0a7f289a785412d936b5b91ac1715fd6:mysql/kanban_ms ddl.sql
 	changed_at timestamp NOT NULL DEFAULT now()
 );
 
@@ -51,7 +50,11 @@ CREATE TABLE user_activity_log
 	user_id int UNSIGNED NOT NULL,
 	user_name varchar (50),
 	modified_table varchar(50) NOT NULL,
+<<<<<<< HEAD:mysql/kanban_ms_ddl.sql
+	action_type varchar(50) NOT NULL,
+=======
 	modified_field varchar(50) NOT NULL,
+>>>>>>> 90119edb0a7f289a785412d936b5b91ac1715fd6:mysql/kanban_ms ddl.sql
 	modification_time timestamp NOT NULL DEFAULT now()
 );
 
@@ -63,5 +66,3 @@ ALTER TABLE task_assignment
 	ADD CONSTRAINT task_assignment_task_id_fk FOREIGN KEY (task_id) REFERENCES task(task_id) ON DELETE CASCADE,
 	ADD CONSTRAINT task_assignment_user_id_fk FOREIGN KEY (user_id) REFERENCES kanban_user(user_id) ON DELETE CASCADE,
 	ADD CONSTRAINT task_assignment_assigned_by_user_id_fk FOREIGN KEY (assigned_by) REFERENCES kanban_user(user_id) ON DELETE CASCADE;
-
-COMMIT;
