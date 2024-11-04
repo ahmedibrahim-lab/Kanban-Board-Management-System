@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for
+from flask import Flask, redirect, url_for, session
 from routes.auth import auth_bp
 from routes.tasks import tasks_bp
 import mysql.connector
@@ -23,7 +23,10 @@ app.register_blueprint(tasks_bp)
 
 @app.route('/')
 def index():
-    return redirect(url_for('auth.register'))
+    # Redirect to profile page if the user is logged in, otherwise to the login page
+    if 'user_id' in session:
+        return redirect(url_for('auth.profile'))
+    return redirect(url_for('auth.login'))
 
 @app.route('/test_db')
 def test_db():
@@ -45,3 +48,4 @@ def test_db():
         
 if __name__ == '__main__':
     app.run(debug=True)
+

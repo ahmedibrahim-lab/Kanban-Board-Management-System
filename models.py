@@ -32,6 +32,16 @@ def get_user_by_email(email):
     conn.close()
     return user
 
+# Updated get_user_by_id function to use user_id as the primary key column
+def get_user_by_id(user_id):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM kanban_user WHERE user_id = %s", (user_id,))
+    user = cursor.fetchone()
+    cursor.close()
+    conn.close()
+    return user
+
 # Task operations
 def create_task(task_name, description, priority, deadline, stage, created_by):
     conn = get_db_connection()
@@ -58,7 +68,6 @@ def get_tasks_by_user(user_id):
     return tasks
 
 def update_task_status(task_id, new_stage):
-    """Update the status of a task by task_id."""
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute("""
@@ -71,7 +80,6 @@ def update_task_status(task_id, new_stage):
     conn.close()
 
 def edit_task(task_id, task_name, description, deadline, priority):
-    """Edit a task by task_id."""
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute("""
@@ -84,7 +92,6 @@ def edit_task(task_id, task_name, description, deadline, priority):
     conn.close()
 
 def delete_task(task_id):
-    """Delete a task by task_id."""
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute("DELETE FROM task WHERE task_id = %s", (task_id,))
@@ -103,6 +110,23 @@ def assign_task(task_id, user_id, start_time, end_time):
     conn.commit()
     cursor.close()
     conn.close()
+    
+def get_user_history(user_id):
+    connection = get_db_connection()
+    cursor = connection.cursor(dictionary=True)
+    query = """
+        SELECT modified_table, action_type, modification_time 
+        FROM user_history 
+        WHERE user_id = %s 
+        ORDER BY modification_time DESC
+    """
+    cursor.execute(query, (user_id,))
+    history = cursor.fetchall()
+    cursor.close()
+    connection.close()
+    return history
+
+
 
 def get_task_assignments(user_id):
     conn = get_db_connection()
@@ -129,6 +153,11 @@ def get_task_history(task_id):
     cursor.execute(query, (task_id,))
     history = cursor.fetchall()
     cursor.close()
+    conn.close()
     
-    history_data = [{"stage": row[0], "date":row[1].strftime('%Y-%m-%d'),"time": row[1].strftime('%H:%M:%S')} for row in history]
+    history_data = [{"stage": row[0], "date": row[1].strftime('%Y-%m-%d'), "time": row[1].strftime('%H:%M:%S')} for row in history]
     return history_data
+
+
+
+
