@@ -48,7 +48,7 @@
 
 #### Meeting duration: 15mins
 
-## Meeting 2 - 24/10/2024 - David Szabo
+## Meeting 3 - 24/10/2024 - David Szabo
 
 Made on 23/10/2024:
 * Daniel: kanban board with sticky notes with filtering.
@@ -66,7 +66,7 @@ Made on 23/10/2024:
 
 #### Meeting duration: 15mins
 
-## Meeting 3 - Presentation - 25/10/2024 - Ahmed Ibrahim
+## Meeting 4 - Presentation - 25/10/2024 - Ahmed Ibrahim
 
 Made on 23/10/2024:
 * Daniel: Worked with shilpa on new design for kanban. Working on additional features (light/dark mode toggle)
