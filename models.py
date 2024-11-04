@@ -8,7 +8,7 @@ def user_activity_log(table_name, action_type):
         def wrapper(*args, **kwargs):
             func(*args, **kwargs)
 
-            user_id = '777' # int(session['user_id'])
+            user_id = session['user_id']
             user_name = session['user_name']
 
             conn = get_db_connection()
