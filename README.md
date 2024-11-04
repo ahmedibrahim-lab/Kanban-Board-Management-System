@@ -50,7 +50,7 @@
 
 ## Meeting 3 - 24/10/2024 - David Szabo
 
-Made on 23/10/2024:
+Made on 24/10/2024:
 * Daniel: kanban board with sticky notes with filtering.
 * Ahmed: authentication system, DB connectivity
 * David: DB debug, sample datas, EC2 installation
@@ -68,7 +68,7 @@ Made on 23/10/2024:
 
 ## Meeting 4 - Presentation - 25/10/2024 - Ahmed Ibrahim
 
-Made on 23/10/2024:
+Made on 25/10/2024:
 * Daniel: Worked with shilpa on new design for kanban. Working on additional features (light/dark mode toggle)
 * Ahmed: implemented kanban redesign and debugged. Working on additional features (overdue and impending notifications)
 * David: Static IP added for EC2 and debugged. Working on additional feature (history loggin)
@@ -78,12 +78,12 @@ Made on 23/10/2024:
 
 | Date       | Person        | Task                                   |
 |------------|---------------|----------------------------------------|
-| 24-10-2024 | Ahmed         |  Implemented light mode for the kanban board.      |
-| 24-10-2024 | Ahmed         |  Edit feature debugging.      |
-| 24-10-2024 | Daniel        |  Built and filled templates for login page. |
-| 24-10-2024 | Daniel        |  Built and filled templates for register page. |
-| 24-10-2024 | David         |  History feature database implementation.   |
-| 24-10-2024 | David         |  EC2 instance database debugging.   |
+| 25-10-2024 | Ahmed         |  Implemented light mode for the kanban board.      |
+| 25-10-2024 | Ahmed         |  Edit feature debugging.      |
+| 25-10-2024 | Daniel        |  Built and filled templates for login page. |
+| 25-10-2024 | Daniel        |  Built and filled templates for register page. |
+| 25-10-2024 | David         |  History feature database implementation.   |
+| 25-10-2024 | David         |  EC2 instance database debugging.   |
 
 
 #### Meeting duration: 25mins
