@@ -14,8 +14,12 @@
             <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
             <button onclick="openTaskModal()">Create New Task</button>
             <button onclick="openFilterModal()">Filter Tasks</button>
+            <!-- Profile Icon with Link to Profile Page -->
+            <a href="{{ url_for('auth.profile') }}">
+                <i class="profile-icon">👤</i>
+            </a>
         </div>
-    </header> 
+    </header>
 
     <div class="kanban-container">
         <div class="kanban-column to-do">
